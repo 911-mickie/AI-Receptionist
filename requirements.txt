@@ -1,1 +1,7 @@
+Flask
+Flask-SocketIO
+eventlet
+transformers
+sentence-transformers
 qdrant-client
+torch
