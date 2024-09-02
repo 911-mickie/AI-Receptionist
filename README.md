@@ -22,3 +22,5 @@ Run env\Scripts\activate
 Run pip install -r requirements.txt
 
 Run main.py
+
+Incase you don't want to use docker then simply run main2.py
