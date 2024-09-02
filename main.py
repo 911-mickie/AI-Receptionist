@@ -75,12 +75,16 @@ def find_best_match(user_input):
         return None, 0
 
 def delayed_response(session_id):
-    time.sleep(15)  # Simulating delay
-    state = conversation_state.get(session_id)
-    best_match = state.get('best_match')
-    socketio.emit('bot_response', {"message": f"I found a match: {best_match['name']}. {best_match['steps']} Dr. Adrin is on the way."}, room=session_id)
-    socketio.emit('bot_response', {"message": "Don't worry, please follow these steps, Dr. Adrin will be with you shortly."}, room=session_id)
-    del conversation_state[session_id]  # Reset conversation state for the session
+    try:
+        time.sleep(15)  # Simulating delay
+        state = conversation_state.get(session_id)
+        best_match = state.get('best_match')
+        print('Yes 1')
+        socketio.emit('bot_response', {"message": f"I found a match: {best_match['name']}. {best_match['steps']} Dr. Adrin is on the way."}, room=session_id)
+        socketio.emit('bot_response', {"message": "Don't worry, please follow these steps, Dr. Adrin will be with you shortly."}, room=session_id)
+    except Exception as e:
+        print("Error: ", str(e))
+
 
 @app.route('/')
 def index():
@@ -119,10 +123,11 @@ def handle_message(data):
             emit('bot_response', {"message": "It appears that you wish to talk to the doctor."})
             time.sleep(3)
             emit('bot_response', {"message": state['last_question']})
-            state['step'] = 6
+            state['step'] = 5
         
         else:
             repeat_last_question()
+            state['step'] = 1
 
     elif state['step'] == 3:
         if emergency_data:
@@ -146,25 +151,13 @@ def handle_message(data):
         eta = random.randint(5, 15)
         emit('bot_response', {"message": f"Dr. Adrin will arrive at {state['location']} in approximately {eta} minutes."})
         state['last_question'] = "Please hold on while I check the database for the next steps."
-        state['step'] = 5
+        state['step'] = 1
 
         # Start the delayed response in a new thread
-        threading.Thread(target=delayed_response, args=(session_id,)).start()
+        socketio.start_background_task(delayed_response, session_id=session_id)
 
-    elif state['step'] == 5:
-        if "too late" in user_input or "late" in user_input:
-            if not state['waiting']:
-                emit('bot_response', {"message": "I understand that you are worried that Dr. Adrin will arrive too late. Please wait a moment while I check the best course of action."})
-                state['waiting'] = True  # Mark that the user has expressed concern and the bot has responded
-            else:
-                if 'best_match' in state:
-                    emit('bot_response', {"message": f"Meanwhile, we would suggest that you start {state['best_match']['name']}. {state['best_match']['steps']}."})
-                    state['step'] = 6  # Move to step 6 after providing the response
-
-        else:
-            repeat_last_question()
     
-    elif state['step'] == 6:
+    elif state['step'] == 5:
         emit('bot_response', {"message": "Thanks for the message, I will forward it to Dr. Adrin."})
         del conversation_state[session_id]  # Reset conversation state for the session
 
