@@ -9,9 +9,9 @@ Make sure to update the path of the model in main.py.
 
 Run docker on terminal
 
-Run docker pull qdrant/qdrant
+Run - docker pull qdrant/qdrant
 
-Run docker run -p 6334:6333 qdrant/qdrant
+Run - docker run -p 6334:6333 qdrant/qdrant
 
 create virtual environment 
 
