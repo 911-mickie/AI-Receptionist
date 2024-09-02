@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dr. Adrin's Clinic - AI Receptionist</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f4f4f9;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 600px;
+            padding: 20px;
+            text-align: left; /* Left-align text */
+        }
+
+        .header {
+            margin-bottom: 20px;
+            text-align: center; /* Center-align the header only */
+        }
+
+        .header h1 {
+            margin: 0;
+            font-size: 36px;
+            color: #333;
+        }
+
+        .header p {
+            margin: 5px 0 20px;
+            font-size: 18px;
+            color: #666;
+        }
+
+        .chat-container {
+            width: 100%;
+            background-color: #ffffff;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+        }
+
+        #chat-box {
+            flex-grow: 1;
+            padding: 20px;
+            background-color: #e9ecef;
+            overflow-y: auto;
+            max-height: 400px;
+        }
+
+        .message {
+            margin-bottom: 15px;
+            padding: 10px;
+            border-radius: 5px;
+            width: fit-content;
+            max-width: 80%;
+            word-wrap: break-word; /* Ensure long messages wrap */
+        }
+
+        .message.You {
+            background-color: #007bff;
+            color: white;
+            align-self: flex-end;
+        }
+
+        .message.AI {  /* Changed from Bot to AI */
+            background-color: #e2e3e5;
+            color: black;
+            align-self: flex-start;
+        }
+
+        #user-input {
+            border: none;
+            padding: 15px;
+            font-size: 16px;
+            width: 100%;
+            box-sizing: border-box;
+            border-top: 1px solid #e9ecef;
+            outline: none;
+        }
+
+        #send-button {
+            background-color: #007bff;
+            color: white;
+            border: none;
+            padding: 15px;
+            cursor: pointer;
+            font-size: 16px;
+            transition: background-color 0.3s ease;
+        }
+
+        #send-button:hover {
+            background-color: #0056b3;
+        }
+
+        .input-container {
+            display: flex;
+            border-top: 1px solid #e9ecef;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>Dr. Adrin's Clinic</h1>
+            <p>Welcome to <strong>AI-Receptionist</strong></p>
+        </div>
+
+        <div class="chat-container">
+            <div id="chat-box"></div>
+            <div class="input-container">
+                <input type="text" id="user-input" placeholder="Type your message here..." autofocus>
+                <button id="send-button">Send</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Include Socket.IO -->
+    <script src="https://cdn.socket.io/4.0.0/socket.io.min.js"></script>
+
+    <script type="text/javascript">
+        const socket = io.connect('http://' + document.domain + ':' + location.port);
+
+        // Function to send a message when the Send button is clicked
+        document.getElementById('send-button').onclick = function() {
+            sendMessage();
+        };
+
+        // Function to send a message when the Enter key is pressed
+        document.getElementById('user-input').addEventListener('keypress', function(e) {
+            if (e.key === 'Enter') {
+                sendMessage();
+            }
+        });
+
+        // Function to send the message and clear the input field
+        function sendMessage() {
+            const userInput = document.getElementById('user-input').value;
+            if (userInput.trim()) {
+                appendMessage('You', userInput);
+                socket.emit('user_message', {'message': userInput});
+                document.getElementById('user-input').value = '';
+            }
+        }
+
+        // Handle incoming messages from the server (AI responses)
+        socket.on('bot_response', function(data) {
+            appendMessage('AI', data.message);  // Ensure this matches the CSS class for AI
+        });
+
+        // Function to append a message to the chat box
+        function appendMessage(sender, message) {
+            const chatBox = document.getElementById('chat-box');
+            const messageElement = document.createElement('div');
+            messageElement.className = 'message ' + sender;
+            messageElement.innerText = sender + ': ' + message;
+            chatBox.appendChild(messageElement);
+            chatBox.scrollTop = chatBox.scrollHeight; // Auto-scroll to the bottom
+        }
+    </script>
+</body>
+</html>

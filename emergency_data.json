@@ -1,0 +1,118 @@
+{
+    "emergencies": [
+      {
+        "name": "heart attack",
+        "description": "Patient is experiencing symptoms of a heart attack, such as chest pain or pressure.",
+        "keywords": ["heart attack", "chest pain", "pressure in chest", "tightness in chest", "heart pain"],
+        "steps": "Have the patient sit down and rest. Give them an aspirin if they are not allergic. Monitor the patient's breathing and pulse, and be ready to perform CPR if necessary."
+      },
+      {
+        "name": "stroke",
+        "description": "Patient shows signs of a stroke, such as facial drooping, arm weakness, or speech difficulties.",
+        "keywords": ["stroke", "facial drooping", "arm weakness", "slurred speech", "difficulty speaking"],
+        "steps": "Lay the patient down with their head and shoulders slightly elevated. Do not give them anything to eat or drink. Monitor their condition and be prepared to perform CPR if they lose consciousness."
+      },
+      {
+        "name": "choking",
+        "description": "Patient is choking and unable to breathe due to an obstruction in the airway.",
+        "keywords": ["choking", "airway blocked", "can't breathe", "something stuck in throat"],
+        "steps": "Perform the Heimlich maneuver: Stand behind the patient, place your hands around their waist, and press inward and upward just above their navel until the object is expelled."
+      },
+      {
+        "name": "burn",
+        "description": "Patient has sustained a burn injury, causing damage to the skin.",
+        "keywords": ["burn", "burn injury", "fire burn", "scalding", "skin damage"],
+        "steps": "Cool the burn with running water for at least 10 minutes. Cover the burn with a sterile, non-stick bandage or clean cloth. Do not apply ice or butter to the burn."
+      },
+      {
+        "name": "poisoning",
+        "description": "Patient has ingested or come into contact with a toxic substance.",
+        "keywords": ["poisoning", "ingested poison", "toxic substance", "overdose"],
+        "steps": "Identify the poison and remove the patient from exposure. Call emergency services immediately. Do not induce vomiting unless instructed by a medical professional."
+      },
+      {
+        "name": "anaphylaxis",
+        "description": "Patient is experiencing a severe allergic reaction, leading to difficulty breathing or swelling.",
+        "keywords": ["anaphylaxis", "allergic reaction", "difficulty breathing", "swelling", "hives"],
+        "steps": "Administer an epinephrine auto-injector if available. Have the patient lie down and elevate their legs. Monitor their breathing and pulse, and be ready to perform CPR if necessary."
+      },
+      {
+        "name": "broken bone",
+        "description": "Patient has sustained a fracture or broken bone.",
+        "keywords": ["broken bone", "fracture", "bone injury", "limb injury"],
+        "steps": "Immobilize the injured area using a splint or sling. Apply ice to reduce swelling. Keep the patient calm and still until medical help arrives."
+      },
+      {
+        "name": "not breathing",
+        "description": "Patient is not breathing or has stopped breathing.",
+        "keywords": ["no breath", "not breathing", "can't breathe", "stopped breathing"],
+        "steps": "Perform CPR: Push hard and fast in the center of the chest. Tilt the patient's head back and lift the chin. Blow air into their mouth until the chest rises."
+      },
+      {
+        "name": "severe bleeding",
+        "description": "Patient is experiencing severe bleeding from a wound.",
+        "keywords": ["bleeding", "blood loss", "severe bleeding"],
+        "steps": "Apply pressure to the wound with a clean cloth or bandage. Elevate the injured area above the level of the heart if possible."
+      },
+      {
+        "name": "seizure",
+        "description": "Patient is experiencing a seizure, which may involve convulsions, shaking, or loss of consciousness.",
+        "keywords": ["seizure", "convulsions", "shaking", "unconscious", "fits"],
+        "steps": "Protect the patient from injury by moving objects away. Do not restrain them or put anything in their mouth. Once the seizure stops, place them on their side in the recovery position."
+      },
+      {
+        "name": "drowning",
+        "description": "Patient has inhaled water and is struggling to breathe or is unconscious.",
+        "keywords": ["drowning", "water inhalation", "can't breathe", "water accident"],
+        "steps": "Remove the patient from the water and check for breathing. If they are not breathing, begin CPR immediately. Keep the patient warm after resuscitation."
+      },
+      {
+        "name": "electric shock",
+        "description": "Patient has been exposed to an electrical current, resulting in potential injury or cardiac arrest.",
+        "keywords": ["electric shock", "electrocution", "electric injury", "shock"],
+        "steps": "Turn off the power source if possible before touching the patient. If the patient is unconscious and not breathing, begin CPR. Look for burn marks and treat them as necessary."
+      },
+      {
+        "name": "hypothermia",
+        "description": "Patient's body temperature has dropped to dangerously low levels due to cold exposure.",
+        "keywords": ["hypothermia", "cold exposure", "shivering", "frozen", "low body temperature"],
+        "steps": "Move the patient to a warm environment. Remove any wet clothing and wrap them in blankets. Provide warm (not hot) fluids if they are conscious. Monitor breathing and be ready to perform CPR."
+      },
+      {
+        "name": "heatstroke",
+        "description": "Patient is suffering from heatstroke, characterized by a high body temperature, confusion, or loss of consciousness.",
+        "keywords": ["heatstroke", "overheating", "high temperature", "heat exhaustion", "heat"],
+        "steps": "Move the patient to a cooler place. Remove excess clothing and cool them with damp cloths or a fan. Offer sips of water if they are conscious. Monitor for signs of worsening condition."
+      },
+      {
+        "name": "allergic reaction (mild)",
+        "description": "Patient is experiencing a mild allergic reaction, such as itching, rash, or swelling.",
+        "keywords": ["allergic reaction", "rash", "itching", "swelling", "hives", "mild allergy"],
+        "steps": "Administer an antihistamine if available. Keep the patient calm and monitor for any signs of the reaction worsening. If the reaction becomes severe, treat as anaphylaxis."
+      },
+      {
+        "name": "asthma attack",
+        "description": "Patient is having difficulty breathing due to an asthma attack.",
+        "keywords": ["asthma attack", "can't breathe", "wheezing", "shortness of breath", "asthma"],
+        "steps": "Help the patient sit up and administer their prescribed inhaler. Encourage slow, deep breaths. If symptoms do not improve, seek emergency medical assistance."
+      },
+      {
+        "name": "diabetic emergency",
+        "description": "Patient is experiencing a diabetic emergency, such as low or high blood sugar.",
+        "keywords": ["diabetic emergency", "low blood sugar", "high blood sugar", "hypoglycemia", "hyperglycemia", "diabetes"],
+        "steps": "If the patient is conscious and able to swallow, give them a sugary drink or snack. Monitor their condition and seek medical help if they do not improve or if they become unconscious."
+      },
+      {
+        "name": "panic attack",
+        "description": "Patient is experiencing a panic attack, characterized by intense fear, shortness of breath, and rapid heartbeat.",
+        "keywords": ["panic attack", "anxiety attack", "shortness of breath", "rapid heartbeat", "fear", "panic"],
+        "steps": "Encourage the patient to take slow, deep breaths. Reassure them that they are safe and the attack will pass. Help them find a quiet place to sit down and relax."
+      },
+      {
+        "name": "eye injury",
+        "description": "Patient has sustained an injury to the eye, causing pain, vision loss, or bleeding.",
+        "keywords": ["eye injury", "vision loss", "eye pain", "eye bleeding", "foreign object in eye"],
+        "steps": "Avoid touching or rubbing the eye. If there is a foreign object, do not attempt to remove it. Cover the eye with a clean cloth or shield and seek immediate medical attention."
+      }
+    ]
+  }
